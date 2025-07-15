@@ -1,0 +1,34 @@
+{
+  "name": "rxp-guide-syntax-highlighter",
+  "displayName": "RXP Guide Syntax Highlighter",
+  "description": "Syntax highlighting for RXP guides in Lua files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rxp-guide",
+        "aliases": ["RXP Guide", "rxp"],
+        "extensions": [".rxp"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rxp-guide",
+        "scopeName": "source.rxp-guide",
+        "path": "./syntaxes/rxp-guide.tmLanguage.json"
+      },
+      {
+        "scopeName": "source.lua.rxp-embedded",
+        "path": "./syntaxes/lua-rxp-embedded.tmLanguage.json",
+        "injectTo": ["source.lua"]
+      }
+    ]
+  }
+}

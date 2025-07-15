@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "RXP Guide",
+  "scopeName": "source.rxp-guide",
+  "patterns": [
+    {
+      "include": "#talk-commands"
+    },
+    {
+      "include": "#color-codes"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#metadata"
+    },
+    {
+      "include": "#step-blocks"
+    },
+    {
+      "include": "#goto-commands"
+    },
+    {
+      "include": "#mob-targets"
+    },
+    {
+      "include": "#coordinates"
+    },
+    {
+      "include": "#completewith"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.rxp-guide",
+          "match": "^\\s*--.*$|(?<=\\S\\s)--.*$"
+        }
+      ]
+    },
+    "metadata": {
+      "patterns": [
+        {
+          "name": "keyword.control.metadata.rxp-guide",
+          "match": "^\\s*#(classic|xprate|name|version|group|next|era|defaultfor|label|sticky|loop|optional)\\b"
+        },
+        {
+          "name": "keyword.control.class.rxp-guide",
+          "match": "<<\\s*(Horde|Alliance|Tauren|Orc|Undead|Troll|Human|Dwarf|Night Elf|Gnome|Warrior|Paladin|Hunter|Rogue|Priest|Shaman|Mage|Warlock|Druid)\\s*"
+        }
+      ]
+    },
+    "step-blocks": {
+      "patterns": [
+        {
+          "name": "keyword.control.step.rxp-guide",
+          "match": "^\\s*step\\b"
+        }
+      ]
+    },
+    "goto-commands": {
+      "patterns": [
+        {
+          "name": "support.function.goto.rxp-guide",
+          "match": "\\.(goto|zone|fly|hearth|home|deathskip|vendor|buy|train|hs|itemStat|money|line|skill|fp|accept|turnin|complete|abandon|isQuestComplete|isQuestTurnedIn|collect|xp|use|itemcount|unitscan|isOnQuest|cast)\\b"
+        },
+        {
+          "begin": "(?<=\\.(goto|zone|fly|hearth|home|deathskip|vendor|buy|train|hs|itemStat|money|line|skill|fp|accept|turnin|complete|abandon|isQuestComplete|isQuestTurnedIn|collect|xp|use|itemcount|unitscan|isOnQuest|cast))\\s*([^>]+?)?\\s*(>>)",
+          "beginCaptures": {
+            "3": { "name": "string.quoted.double.instruction.rxp-guide" }
+          },
+          "end": "(?=^\\s*(?!>>)[^\\s]|$)",
+          "contentName": "string.quoted.double.instruction.rxp-guide",
+          "patterns": [
+            {
+              "include": "#color-codes"
+            },
+            {
+              "include": "#comments"
+            }
+          ]
+        }
+      ]
+    },
+    "mob-targets": {
+      "patterns": [
+        {
+          "name": "keyword.control.target.rxp-guide",
+          "match": "\\.(target|mob)\\b"
+        }
+      ]
+    },
+    "coordinates": {
+      "patterns": [
+        {
+          "name": "constant.numeric.coordinates.rxp-guide",
+          "match": "\\b\\d+\\.\\d+,\\d+\\.\\d+\\b"
+        }
+      ]
+    },
+    "completewith": {
+      "patterns": [
+        {
+          "name": "keyword.control.completewith.rxp-guide",
+          "match": "#completewith\\b"
+        }
+      ]
+    },
+    "talk-commands": {
+      "begin": "^\\s*(>>)",
+      "beginCaptures": {
+        "1": { "name": "string.quoted.double.instruction.rxp-guide" }
+      },
+      "end": "(?=^\\s*[^>]|$)",
+      "contentName": "string.quoted.double.instruction.rxp-guide",
+      "patterns": [
+        {
+          "include": "#color-codes"
+        },
+        {
+          "include": "#comments"
+        }
+      ]
+    },
+    "color-codes": {
+      "patterns": [
+        {
+          "name": "constant.character.texture.rxp-guide",
+          "match": "\\|T([^|]+)\\|t"
+        },
+        {
+          "name": "constant.character.color.rxp-guide",
+          "match": "\\|c[^|]+\\|r"
+        }
+      ]
+    }
+  }
+}

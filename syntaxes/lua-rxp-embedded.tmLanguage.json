@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Lua RXP Embedded",
+  "scopeName": "source.lua.rxp-embedded",
+  "injectionSelector": "L:source.lua",
+  "patterns": [
+    {
+      "begin": "(RXPGuides\\.RegisterGuide\\(\\[\\[)",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.rxp.lua"
+        }
+      },
+      "end": "(\\]\\]\\))",
+      "endCaptures": {
+        "1": {
+          "name": "keyword.control.rxp.lua"
+        }
+      },
+      "name": "meta.embedded.block.rxp-guide",
+      "patterns": [
+        {
+          "include": "source.rxp-guide"
+        }
+      ]
+    }
+  ]
+}
